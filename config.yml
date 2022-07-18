@@ -1,0 +1,58 @@
+default:
+  counts:
+    synID: syn22084837
+    version:
+    gene id: feature
+  metadata:
+    synID: syn22090070
+    version: 2
+    sample id: sampleID
+  biomart:
+    synID: syn21907998
+    version:
+    filters: ensembl_gene_id
+    host: ensembl.org
+    organism: hsa
+    exon only: FALSE
+    custom build: FALSE
+    gtfID:
+    gtfVersion:
+    fastaID:
+    fastaVersion:
+  factors: ["sampleID", "batch", "sex", "diagnosis"]
+  random_effect:
+  continuous: ["RIN", "pmi", "ageofdeath"]
+  x_var: diagnosis
+  cores: 6
+  conditions: ["diagnosis", "sex"]
+  cpm threshold: 1
+  percent threshold: 0.5
+  sex check: sex
+  dimensions:
+    color: "diagnosis"
+    shape: "batch"
+    size: "ageofdeath"
+  skip model: TRUE
+  force null model: 
+  force model with: ["sex", "diagnosis", "batch"]
+  de FC: 1.5
+  de p-value threshold: 0.05
+  visualization gene list: ["LCN2", "TRIM69"]
+  de contrasts:
+    diagnosis:
+      primary: ["diagnosis"]
+      is_numeric_int: FALSE
+      numeric:
+      contrasts: ["CT-ZZ"]
+    diagnosis-sex:
+      primary: ["diagnosis", "sex"]
+      is_numeric_int: FALSE
+      numeric:
+      contrasts: ["ZZ_F-CT_F","ZZ_M-CT_M" ]
+    age-death:
+      primary: ["diagnosis"]
+      is_numeric_int: TRUE
+      numeric: ["ageofdeath"]
+      contrasts: ["CT-ZZ"]
+  report: "openSci"
+  store output: syn23572479

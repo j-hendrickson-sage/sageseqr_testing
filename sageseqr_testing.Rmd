@@ -1,0 +1,63 @@
+---
+title: "sageseqr_testing"
+output: html_document
+date: '2022-07-13'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(tidyverse)
+library(targets)
+
+```
+
+```{r}
+
+#install.packages("igraph", type="binary")
+
+remotes::install_github("Sage-Bionetworks/sageseqr", force = TRUE)
+
+```
+```{r}
+
+library(sageseqr)
+
+#install.packages("config")
+
+```
+```{r}
+
+library(synapser)
+config <- config::get()
+
+
+```
+
+```{r config-setup}
+profile_set <- "default"
+Sys.setenv(R_CONFIG_ACTIVE = profile_set)
+```
+
+```{r}
+
+library(sageseqr)
+library(targets)
+
+install.packages("locfit_1.5-9.1.tar.gz", repos = NULL, type="source")
+
+```
+
+```{r run-plan}
+library(sageseqr)
+library(targets)
+# gather the dependencies in your working directory by running this function:
+start_de()
+# inspect the steps of the workflow
+tar_manifest()
+# run the analysis
+tar_make()
+```
